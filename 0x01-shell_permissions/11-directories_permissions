@@ -1,2 +1,2 @@
 #!/bin/bash
-kalam farig
+sudo find . -type d -exec chmod a+x {} \; 
