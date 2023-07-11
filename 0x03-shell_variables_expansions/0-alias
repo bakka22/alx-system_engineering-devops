@@ -1,0 +1,2 @@
+#!/bin/sh
+alias R="rm *"
