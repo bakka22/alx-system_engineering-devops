@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# print Best School 10 times
+list=$(ls)
+for _ in $list
+do
+	echo "$i" | cut -d '-' -f2
+done
