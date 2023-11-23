@@ -2,9 +2,9 @@
 # display hour
 i=0
 j=0
-while [ "$i" -le 11 ]
+while [ "$i" -le 12 ]
 do
-	j=0
+	j=1
 	echo "Hour: $i"
 	while [ "$j" -le 59 ]
 	do

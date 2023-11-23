@@ -2,11 +2,11 @@
 # display hour
 i=0
 j=0
-while [ "$i" -le 24 ]
+while [ "$i" -le 11 ]
 do
-	j=0
+	j=1
 	echo "Hour: $i"
-	while [ "$j" -le 60 ]
+	while [ "$j" -le 59 ]
 	do
 		echo "$j"
 		j=$(( j + 1 ))
