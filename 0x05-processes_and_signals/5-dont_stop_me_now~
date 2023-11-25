@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #  displays the PID, along with the process name, of
 # processes whose name contain the word bash
-while "true"
-do
-	echo "To infinity and beyond"
-	sleep 2
-done
+id=$(pgrep "bash ./4-to_infinity_and_beyond" -f)
+if [-n "$id" ]
+then
+	kill -15 "$id"
+fi
