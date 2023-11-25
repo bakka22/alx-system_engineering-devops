@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #  displays the PID, along with the process name, of
 # processes whose name contain the word bash
-pkill -15 "bash ./4-to_infinity_and_beyond" -f
+pkill -9 "bash ./7-highlander" -f
