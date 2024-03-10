@@ -5,7 +5,7 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
-hos=$(cat /etc/hosts | awk '/^127.0.0.1/ {print $3}')
+hos=$(hostname | cut -d '@' -f2)
 echo "server {
      listen 80 default_server;
      listen [::]:80 default_server;
