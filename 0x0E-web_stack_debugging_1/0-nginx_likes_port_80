@@ -3,4 +3,5 @@
 apt -y update
 apt -y install nginx
 apt -y install curl
-service nginx start
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx restart
