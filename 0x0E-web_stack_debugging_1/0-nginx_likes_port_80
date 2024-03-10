@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 # install and configure nginx
-apt -y update
-apt -y install nginx
-apt -y install curl
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
