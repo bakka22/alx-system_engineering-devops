@@ -4,7 +4,7 @@ apt -y update
 apt-get -y install --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.9
 apt-get -y install haproxy=2.9.\*
-cp -p /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bk
+#cp -p /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bk
 echo "frontend bakka-frontend
     bind *:80
     default_backend bakka-backend
