@@ -9,6 +9,7 @@ cp -p /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bk
 echo "frontend bakka-frontend
     bind *:80
     default_backend bakka-backend
+
 backend bakka-backend
     balance roundrobin
     server 476130-web-01 100.25.143.230:80 check
