@@ -2,4 +2,5 @@
 # install and configure nginx
 apt-get -y update
 apt-get -y install nginx
+apt-get install ufw
 service nginx start
