@@ -11,6 +11,7 @@ echo "server {
      listen [::]:80 default_server;
      root /var/www/html;
      add_header X-Served-By ${hos};
+     index index.nginx-debian.html;
      location /redirect_me {
          return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
      }
