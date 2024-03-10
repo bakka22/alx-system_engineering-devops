@@ -5,13 +5,12 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
-hos=$(hostname | cut -d '@' -f2)
+hos=$(cat /etc/hosts | awk '/^127.0.0.1/ {print $3}')
 echo "server {
      listen 80 default_server;
      listen [::]:80 default_server;
      root /var/www/html;
      add_header X-Served-By ${hos};
-     index index.nginx-debian.html;
      location /redirect_me {
          return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
      }

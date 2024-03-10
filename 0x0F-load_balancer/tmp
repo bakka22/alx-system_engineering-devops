@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+apt -y update
+apt-get -y install --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.9
+apt-get -y install haproxy=2.9.\*
+cp -p /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bk
+echo "frontend bakka-frontend
+    bind *:80
+    mode http
+    default_backend bakka-backend
+backend bakka-backend
+    balance roundrobin
+    server 476130-web-01 100.25.143.230:80 check
+    server 476130-web-02 204.236.240.126:80 check
+" >> /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+sudo service haproxy restart
