@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Check if the URL argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <URL>"
+    exit 1
+fi
+
+# Store the URL provided as a command-line argument
+URL=$1
+
+# Send a request to the URL and store the response headers in a temporary file
+HEADERS=$(mktemp)
+curl -s -I -o "$HEADERS" "$URL"
+
+# Check if curl encountered any errors
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to retrieve headers from $URL"
+    exit 1
+fi
+
+# Extract the content length from the response headers
+SIZE=$(grep -i '^Content-Length:' "$HEADERS" | awk '{print $2}')
+
+# Check if Content-Length header exists
+if [ -z "$SIZE" ]; then
+    echo "Error: Content-Length header not found in the response headers."
+    exit 1
+fi
+
+# Display the size of the response body
+echo "$SIZE"
+
+# Remove the temporary file
+rm -f "$HEADERS"
