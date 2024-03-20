@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # configuer container to run nginx by the user nginx
 chmod 777 /etc/nginx/nginx.conf
+sed -i 's/Listen 8080/#Listen 8080/g' /etc/apache2/ports.conf
+sed -i 's/#user www-data;/user nginx;/g' /etc/nginx/nginx.conf
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+pkill -1 apache2
 service nginx reload
 service nginx start
 service nginx stop
