@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# configuer container to run nginx by the user nginx
 chmod 777 /etc/nginx/nginx.conf
 service nginx reload
 service nginx start
