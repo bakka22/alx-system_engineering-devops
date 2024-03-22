@@ -4,5 +4,5 @@ d=$(date +"%d")
 m=$(date +"%m")
 y=$(date +"%y")
 file="$d-$m-$y.tar.gz"
-mysqldump -u root --password="$1" --all-databases > backup.sql
+mysqldump -u root --password="$1" --all-databases 2>/dev/null > backup.sql
 tar -czvf "$file" backup.sql
