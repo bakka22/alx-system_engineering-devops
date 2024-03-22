@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# backup all databases and compress them
 d=$(date +"%d")
 m=$(date +"%m")
 y=$(date +"%y")
