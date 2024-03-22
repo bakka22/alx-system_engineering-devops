@@ -3,5 +3,6 @@
 d=$(date +"%d")
 m=$(date +"%m")
 y=$(date +"%y")
+file="$d-$m-$y.tar.gz"
 sudo mysqldump -u root --password="$1" --all-databases > backup.sql
-tar -czvf "$d-$m-$y".tar.gz backup.sql
+tar -czvf "$file" backup.sql
