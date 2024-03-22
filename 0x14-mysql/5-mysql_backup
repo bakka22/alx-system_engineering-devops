@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+d="$(date +%d)"
+m="$(date +%m)"
+y="$(date +%y)"
+sudo mysqldump -u root --password="$1" --all-databases > backup.sql
+tar -czvf "$d"-"$m"-20"$y".tar.gz backup.sql

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+mysqldump -u root --password="$1" --all-databases > backup.sql
+
