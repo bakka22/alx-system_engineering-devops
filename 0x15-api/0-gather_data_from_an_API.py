@@ -25,8 +25,7 @@ if __name__ == "__main__":
     response = requests.get(url)
     usr = response.json()
     usr_name = usr.get("name")
-    print(f"Employee {usr_name} is done with tasks ({done_count}/"
+    print(f"Employee {usr_name} is done with tasks({done_count}/"
           + f"{task_count}):")
     for tsk in task_list:
         print(f"\t {tsk}")
-
