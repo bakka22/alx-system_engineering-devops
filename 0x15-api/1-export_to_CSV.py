@@ -26,5 +26,5 @@ if __name__ == "__main__":
                    f"{task.get('completed')}", f"{task.get('title')}"]
             task_list.append(tmp)
     with open(file_path, "w", newline='') as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         writer.writerows(task_list)
