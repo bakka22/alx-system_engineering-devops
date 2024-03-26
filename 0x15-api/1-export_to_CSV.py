@@ -22,9 +22,11 @@ if __name__ == "__main__":
         response = requests.get(url)
         task = response.json()
         if task.get("userId") == usr_id:
-            tmp = [f"{usr_id}", f"{usr_name}",
-                   f"{task.get('completed')}", f"{task.get('title')}"]
+            tmp = [usr_id, usr_name,
+                   task.get('completed'), task.get('title')]
             task_list.append(tmp)
     with open(file_path, "w", newline='') as f:
-        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
-        writer.writerows(task_list)
+        for i in task_list:
+            line = '"' + str(i[0]) + '","' + i[1] + '","' + str(i[2]) +\
+                   '","' + i[3] + '"'
+            f.write(line + "\n")

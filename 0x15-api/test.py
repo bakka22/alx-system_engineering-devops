@@ -1,21 +1,38 @@
 #!/usr/bin/python3
+"""
+Check student .CSV output of user information
+"""
+
 import csv
+import requests
+import sys
 
-# Sample data
-data = [
-    ['Name', 'Age', 'City'],
-    ['John', 30, 'New York'],
-    ['Alice', 25, 'Los Angeles'],
-    ['Bob', 35, 'Chicago']
-]
+users_url = "https://jsonplaceholder.typicode.com/users?id="
+todos_url = "https://jsonplaceholder.typicode.com/todos"
 
-# File path to save the CSV
-file_path = 'data.csv'
 
-# Write data to CSV file
-with open(file_path, 'w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerows(data)
+def user_info(id):
+    """ Check CSV formatting """
 
-print(f"CSV file '{file_path}' has been created successfully.")
+    response = requests.get(todos_url).json()
+    with open(str(id) + ".csv", 'r') as f:
+        output = f.read().strip()
+        print(output)
+        count = 0
+        flag = 0
+        for i in response:
+            if i['userId'] == id:
+                url = users_url + str(i['userId'])
+                usr_resp = requests.get(url).json()
+                line = '"' + str(i['userId']) + '","' + usr_resp[0]['username'] + '","' + str(i['completed']) + '","' + i['title'] + '"'
+                count += 1
+                if not line in output:
+                    print("Task {} Formatting: Incorrect".format(count))
+                    flag = 1
 
+    if flag == 0:
+        print("Formatting: OK")
+
+
+if __name__ == "__main__":
+    user_info(int(sys.argv[1]))
