@@ -16,7 +16,7 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/users/" + str(usr_id)
     response = requests.get(url)
     usr = response.json()
-    usr_name = usr.get("name")
+    usr_name = usr.get("username")
     for i in range(srch_rng[0], srch_rng[1]):
         url = "https://jsonplaceholder.typicode.com/todos/" + str(i)
         response = requests.get(url)
