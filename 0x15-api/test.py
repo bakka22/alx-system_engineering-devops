@@ -1,28 +1,21 @@
 #!/usr/bin/python3
-import json
-import requests
-import sys
-usr_name = ""
-task_list = []
-task_count = 0
-done_count = 0
-usr_id = int(sys.argv[1])
-srch_rng = (usr_id * 20 - 19, usr_id * 20 + 1)
-for i in range(srch_rng[0], srch_rng[1]):
-    url = "https://jsonplaceholder.typicode.com/todos/" + str(i)
-    response = requests.get(url)
-    task = response.json()
-    if task["userId"] == usr_id:
-        if task["completed"] == True:
-            task_list.append(task["title"])
-            done_count += 1
-        task_count += 1
+import csv
 
-url = "https://jsonplaceholder.typicode.com/users/" + str(usr_id)
-response = requests.get(url)
-usr = response.json()
-usr_name = usr["name"]
-print(f"Employee {usr_name} is done with tasks ({done_count}/{task_count}):")
-for tsk in task_list:
-    print(f"\t {tsk}")
+# Sample data
+data = [
+    ['Name', 'Age', 'City'],
+    ['John', 30, 'New York'],
+    ['Alice', 25, 'Los Angeles'],
+    ['Bob', 35, 'Chicago']
+]
+
+# File path to save the CSV
+file_path = 'data.csv'
+
+# Write data to CSV file
+with open(file_path, 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+
+print(f"CSV file '{file_path}' has been created successfully.")
 
